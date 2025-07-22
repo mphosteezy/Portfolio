@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h2>Age calculator</h2>
+        <p>Enter your birth year</p>
+        <input type="number" id="birthYear">
+        <button onclick="calculateAge()">check age</button>
+        <p id="result"></p>
+
+        <script>
+            function calculateAge() {
+                let year= getElementById("birthYear").value;
+                let age= 2025- year;
+                document.getElementsById("result").innerHTML = "you are" + age + " years old.";
+            }
+            
+            
+        </script>
+    </body>
+</html>

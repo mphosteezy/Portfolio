@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h2>Quiz time</h2>
+        <p>What does html stand for</p>
+        
+        <input type="radio" name="q1" value="a"> highText Machine Launguage<br>
+        <input type="radio" name="q1" value="b"> hyperText Markup Language<br>
+        <input type="radio" name="q1" value="c"> HyperTool Multi Language<br>
+
+        <button onclick="checkAnswer()">Submit</button>
+
+        <p id="Feedback"></p>
+
+        <script>
+            function checkAnswer(){
+                let options = document.getElementsByName("q1");
+                let selectedAmswer = "";
+                for(let i = 0; i < options.length; i++){
+                    if(options[i].checked){
+                        selectedAmswer = options[i].value;
+        
+                    }
+                }
+                if(selectedAmswer === "b"){
+                    document.getElementById("Feedback").innerHTML = "Correct!";
+                } else if(selectedAmswer === ""){
+                    document.getElementById("Feedback").innerHTML = "Please select an answer.";
+                }
+                else {
+                    document.getElementById("Feedback").innerHTML = "Incorrect, the correct answer is b: hyperText Markup Language.";
+                }
+            }
+                
+            
+        </script>
+    </body>
+</html>
