@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="stylesheet" href = "styles.css">
+        <title>Sneaker Booth</title>
+       
+    </head>
+    <body>
+    <header>
+        <h1>SNEAKER BOOTH </h1>
+        <p>Your one-stop shop for the latest sneakers</p>
+     </header>   
+         
+            <h2>SNEAKER CATALOGUE</h2>
+        <div class="shoe-column">
+        <div class="shoe card">
+        <a href="nikeshox.html">
+        <img src="image0.jpeg">
+        <img src="image1.jpeg">
+
+        </a>
+        <h3>Nike Shox R4</h3>
+         <h5>Nike</h5>
+        <h6>R3100</h6>
+        <button onclick="buynow('nike shox')">Add to Cart</button>
+        </div>
+        </div>
+
+        <div class="shoe-column">
+        <div class="shoe card">
+        <a href="NewBalance9060.html">
+        <img src="new balance.jpeg">
+        <img src="newbalance1.jpeg">
+        </a>
+        <h3>New Balance 9060</h3>
+         <h5>New Balance</h5>
+        <h6>R3100</h6>
+        <button onclick= "buynow('new balance')">Add to Cart</button>
+        
+        </div>
+        </div>
+
+        <div class="shoe-column">
+        <div class="shoe card">
+        <a href="Nikeportal.html">
+        <img src="portal1.jpeg">
+        <img src="portal6.jpeg">
+        </a>
+        <h3>Nike Portal</h3>
+        <h5>Nike</h5>
+        <h6>R2199</h6>
+        <button onclick="buynow('nike portal-X')">Add to Cart</button>
+         </div>
+         </div>
+
+         <div class="shoe-column">
+         <div class="shoe card">
+         <a href="nikedunk.html">
+            <img src="1.jpeg">
+            <img src="2.jpeg">
+         </a>
+         <h3>Nike Adidas</h3>
+         <h5>Nike</h5>
+         <h6> R1954 <p>-15%</p></h6>
+         <button onclick="buynow('nike dunk')">Add to Cart</button>
+         </div>
+         </div>
+
+         <!--Checkout button-->
+         <button onclick="checkoutCart()">Checkout</button>
+
+        <!----Show cart Items----->
+         <div id="cart"></div>
+            
+         <script>
+            function buynow(shoeName) {
+                alert("You have selected " + shoeName + ". Please proceed to checkout.");
+            }
+
+            let Cart = [];
+            function addToCart(shoeName, price){
+                cart.push({name: shoeName, price: price});
+                alert(shoeName + " has been added to your cart.");
+                displayCart();
+            }
+            function displayCart() {
+                let cartDiv = document.getElementById("cart");
+                cartDiv.innerHTML = "<h3>Your Cart</h3>";
+
+                cart.forEach(item => {
+                    cartDiv.innerHTML += `<p>${item.name} - R${item.price}</p>`;
+                });
+            }
+            function checkoutCart() {
+                if (cart.length === 0) {
+                    alert("Your cart is empty.");
+                return;
+                }
+                let total = 0;
+                cart.forEach(item => total += item.price);
+                alert('Thank you for shopping!\nTotal: R${total}');
+                cart = [];
+                document.getElementById("cart") .innerHTML = "";
+            }
+
+            let cart = [];
+
+            function addToCart(shoeName, price) {
+                cart.push({ name: shoeName, price: price });
+                alert(shoeName + " has been added to your cart.");
+                displayCart();
+            }
+            function displayCart() {
+                let cartDiv = document.getElementById("cart");
+                cartDiv.innerHTML = "<h3>Your Cart</h3>";
+
+                cart.forEach(item => {
+                    cartDiv.innerHTML += `<p>${item.name} - R${item.price}</p>`;
+                });
+            }
+            function checkoutCart() {
+                if (cart.length === 0) {
+                    alert("Your cart is empty.");
+                    return;
+                }
+                let total = 0;
+                cart.forEach(item => total += item.price);
+                alert('Thank you for shopping!\nTotal: R${total}');
+                cart = [];
+                document.getElementById("cart").innerHTML = "";
+            }
+            // handle shoe form
+            document.getElementById("shoeForm").addEventListener("submit", function(event) {
+                event.preventDefault();
+                
+                let name =document.getElementById("shoeName").value;
+                let price = parseInt(document.getElementById("shoePrice").value);
+                let image = document.getElementById("shoeImage").value;
+
+            // create a new shoe card
+                let shoeCard = document.createElement("div");
+                shoeCard.className = "shoe-card";
+                shoecard.innerHTML =`
+                   <img src="${image}" alt="${name}">
+                   <p>${name} - R${price}</p>
+                   <button onclick="addToCart('${name}', ${price})">Add to Cart</button>
+                `;
+
+            // add it to the group    
+            document.getElementById("shoeContainer").appendChild(shoeCard);
+
+            // Reset form
+            document.getElementById("shoeForm").reset();
+            });
+         </script>
+
+        
+    </body>
+</html>
